@@ -1,0 +1,80 @@
+---
+const { navItems } = Astro.props;
+---
+
+<button class="block md:hidden">
+	<span class="sr-only">Open sidebar</span>
+	<svg
+		xmlns="http://www.w3.org/2000/svg"
+		width="24"
+		height="24"
+		viewBox="0 0 24 24"
+		fill="none"
+		stroke="currentColor"
+		stroke-width="2"
+		stroke-linecap="round"
+		stroke-linejoin="round"
+		class="size-8"
+		aria-label="Open menu"
+	>
+		<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+		<path d="M4 6h16"></path>
+		<path d="M7 12h13"></path>
+		<path d="M10 18h10"></path>
+	</svg>
+</button>
+<aside
+	class="overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 flex justify-start items-center w-full md:inset-0 h-screen max-h-full bg-[#1d1d1d] bg-opacity-50 backdrop-blur-sm transition-all ease-in duration-300 md:hidden"
+	aria-label="Sidebar"
+>
+	<div class="h-full w-80 md:w-96 px-3 py-4 overflow-y-auto bg-[#1d1d1d]">
+		<div class="pb-1 mb-1">
+			<div class="flex items-center justify-between">
+				<a href="/" aria-label="home" class="block text-xl group">
+					<p>
+						<span class="font-bold group-hover:text-[#7067CF]">DMZ</span>dev.
+					</p>
+				</a>
+				<button
+					class="inline-flex items-center hover:text-[#7067CF] cursor-pointer"
+				>
+					<span class="sr-only">Close sidebar</span>
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						width="24"
+						height="24"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						class="size-6"
+						aria-label="Close menu"
+					>
+						<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+						<path d="M18 6l-12 12"></path>
+						<path d="M6 6l12 12"></path>
+					</svg>
+				</button>
+			</div>
+		</div>
+		<hr
+			class="h-[2px] w-full border-t-0"
+			style="background:linear-gradient(to right, transparent 0%, white 50%, transparent 100%)"
+		/>
+		<ul class="space-y-6 font-medium mt-4">
+			{
+				navItems.map((data) => (
+					<a
+						href={data.url}
+						aria-label={data.label}
+						class="block text-lg font-semibold"
+					>
+						{data.title}
+					</a>
+				))
+			}
+		</ul>
+	</div>
+</aside>
