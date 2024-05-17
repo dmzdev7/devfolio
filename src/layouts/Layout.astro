@@ -1,52 +1,87 @@
 ---
+// Supports weights 100-900
+import "@fontsource-variable/montserrat";
+
+// Components
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+
 interface Props {
 	title: string;
+	description: string;
 }
 
-const { title } = Astro.props;
+const { description, title } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
+		<meta property="title" content={title} />
+		<meta name="description" content={description} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
 	<body>
+		<Navbar />
 		<slot />
+		<hr
+			class="h-[2px] w-full border-t-0 my-3"
+			style="background:linear-gradient(to right, transparent 0%, white 50%, transparent 100%)"
+		/>
+		<Footer />
 	</body>
 </html>
 
 <style is:global>
 	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
+		color-scheme: light dark;
+		--black: #1d1d1d;
+		--cardinal-green: #0c1a1a;
+		--light-blue-green: #7067cf;
+		--neon-blue: #00b4d8;
 	}
+
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
 	html {
-		font-family: system-ui, sans-serif;
-		background: #13151a;
-		background-size: 224px;
+		/* font-size: 62.5%; */
+		font-family: "Montserrat Variable", sans-serif;
+		scroll-behavior: smooth;
+		background-color: var(--black);
 	}
-	code {
-		font-family:
-			Menlo,
-			Monaco,
-			Lucida Console,
-			Liberation Mono,
-			DejaVu Sans Mono,
-			Bitstream Vera Sans Mono,
-			Courier New,
-			monospace;
+
+	body {
+		display: flex;
+		flex-direction: column;
+		min-height: 100vh;
+		overscroll-behavior: none;
+	}
+
+	::-webkit-scrollbar {
+		width: 6px;
+	}
+
+	::-webkit-scrollbar-track {
+		background: gray;
+	}
+
+	::-webkit-scrollbar-thumb {
+		border-radius: 20px;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		html {
+			scroll-behavior: auto;
+		}
 	}
 </style>
