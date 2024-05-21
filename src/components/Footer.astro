@@ -1,10 +1,7 @@
 ---
-const currentYear = new Date().getFullYear();
+import { personalData } from "../utils/data";
 
-const personalData = {
-	github: "https://github.com/dmzdev7",
-	linkedin: "https://www.linkedin.com/in/david-martinez-bravo",
-};
+const currentYear = new Date().getFullYear();
 ---
 
 <footer class="w-full mx-auto container mb-2 p-2">
@@ -63,7 +60,7 @@ const personalData = {
 			>.
 		</div>
 		<span class="text-base">
-			© {currentYear}.&nbsp; Todos los derechos reservados.
+			© {currentYear}.&nbsp;Todos los derechos reservados.
 		</span>
 	</div>
 </footer>
