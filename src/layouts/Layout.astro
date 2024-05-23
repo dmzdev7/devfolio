@@ -47,7 +47,9 @@ const { description, title } = Astro.props;
 		--neon-blue: #00b4d8;
 	}
 
-	* {
+	*,
+	::before,
+	::after {
 		margin: 0;
 		padding: 0;
 		box-sizing: border-box;
