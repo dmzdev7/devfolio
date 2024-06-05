@@ -42,8 +42,9 @@ const { description, title } = Astro.props;
 	:root {
 		color-scheme: light dark;
 		--black: #1d1d1d;
-		--cardinal-green: #0c1a1a;
-		--light-blue-green: #7067cf;
+		--smoky-black: #14110f;
+		--snow: #fffafa;
+		--ghost-white: #f8f8ff;
 		--neon-blue: #00b4d8;
 	}
 
@@ -56,16 +57,14 @@ const { description, title } = Astro.props;
 	}
 
 	html {
-		/* font-size: 62.5%; */
 		font-family: "Montserrat Variable", sans-serif;
 		scroll-behavior: smooth;
 		background-color: var(--black);
 	}
 
 	body {
-		display: flex;
-		flex-direction: column;
-		/* min-height: 100vh; */
+		width: 100%;
+		min-height: 100vh;
 		overscroll-behavior: none;
 	}
 
