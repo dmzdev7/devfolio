@@ -1,10 +1,10 @@
 ---
+import { navItems } from "../../../utils/constants";
 import Sidebar from "./Sidebar.astro";
-import { navItems } from "../utils/data";
 ---
 
 <header
-	class="sticky top-0 z-[100] w-full mx-auto mt-2 bg-[#1d1d1d] bg-opacity-50 backdrop-blur-md border-b border-[#585858]"
+	class="sticky top-0 left-0 z-[100] w-full mx-auto bg-[#1d1d1d] bg-opacity-50 backdrop-blur-md border-b border-[#585858]"
 >
 	<div class="flex items-center justify-between py-5 px-3 md:px-10">
 		<a href="/" aria-label="home" class="block text-2xl md:text-3xl group">
@@ -39,7 +39,7 @@ import { navItems } from "../utils/data";
 					<a
 						href={data.url}
 						aria-label={data.label}
-						class="block text-lg font-semibold hover:text-[#00b4d8] transition duration-300 ease-in-out"
+						class="nav-links text-md font-semibold hover:text-[#00b4d8] transition duration-300 ease-in-out"
 					>
 						{data.title}
 					</a>
@@ -50,3 +50,25 @@ import { navItems } from "../utils/data";
 </header>
 
 <Sidebar navItems={navItems} />
+
+<style>
+	nav a.nav-links {
+		position: relative;
+		display: inline-block;
+		text-decoration: none;
+	}
+	nav a.nav-links::after {
+		position: absolute;
+		content: "";
+		width: 100%;
+		height: 2px;
+		top: 110%;
+		left: 0;
+		background-color: #00b4d8;
+		transform: scaleX(0);
+		transition: all 0.4s ease;
+	}
+	nav a.nav-links:hover::after {
+		transform: scaleX(1);
+	}
+</style>
